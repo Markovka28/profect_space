@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список объектов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}">
+    <style>
+        /* Локальные стили для списка объектов */
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон для элементов списка */
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 10px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: rgba(0, 150, 136, 0.8); /* Темно-зеленый фон */
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        a:hover {
+            background: rgba(0, 150, 136, 1); /* Более яркий зеленый при наведении */
+        }
+    </style>
+</head>
+<body>
+    <h2>Список астрономических объектов</h2>
+    <ul>
+        {% for object in objects %}
+        <li>{{ object.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'object_create' %}">Добавить объект</a>
+    <canvas id="canvas"></canvas>
+    <canvas id="stars"></canvas>
+    <script src="{% static 'myapp/js/script.js' %}"></script>
+</body>
+</html>
